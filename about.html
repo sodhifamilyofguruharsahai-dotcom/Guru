@@ -6,34 +6,123 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Pothimala Sahib</title>
 </head>
+<style>
+   nav {
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+      padding: 12px 20px;
+      border-radius: 0 0 15px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav img {
+      height: 50px;
+      border-radius: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a i {
+      font-size: 15px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 3px;
+      background: #ffdd00;
+      transition: width 0.3s;
+      border-radius: 3px;
+    }
+
+    .nav-links a:hover {
+      color: #ffdd00;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 65px;
+        right: 20px;
+        background: linear-gradient(90deg, #6a11cb, #2575fc);
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        width: 200px;
+      }
+
+      .nav-links a {
+        font-size: 18px;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+</style>
 <body class="bg-gray-50 text-gray-800 font-serif">
 
   <!-- Navbar -->
-  <nav class="bg-gradient-to-r from-sky-500 to-indigo-600 shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto flex justify-between items-center px-6 py-3">
-      
-      <!-- Logo -->
-      <div class="flex items-center gap-3">
-        <img class="h-12 w-12 rounded-full border-2 border-white shadow-md" src="logo family ..JPG" alt="Logo">
-        <span class="text-2xl font-bold text-white">Sodhi Family</span>
-      </div>
-
-      <!-- Hamburger Button (Mobile) -->
-      <button id="menu-btn" class="block lg:hidden text-white focus:outline-none">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" 
-             viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" 
-                d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-
-      <!-- Nav Links -->
-      <div id="menu" class="hidden lg:flex space-x-6 flex-col lg:flex-row absolute lg:static top-16 right-6 lg:top-auto lg:right-auto bg-gradient-to-r lg:bg-transparent from-sky-500 to-indigo-600 lg:from-transparent lg:to-transparent rounded-lg shadow-lg lg:shadow-none p-6 lg:p-0">
-        <a href="about.html" class="text-white text-lg hover:text-yellow-300 transition">About</a>
-        <a href="gallery.html" class="text-white text-lg hover:text-yellow-300 transition">Gallery</a>
-        <a href="history.html" class="text-white text-lg hover:text-yellow-300 transition">History</a>
-        <a href="contact.html" class="text-white text-lg hover:text-yellow-300 transition">Contact</a>
-      </div>
+ <nav>
+    <img src="logo family ..JPG" alt="Family Logo">
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div><div></div><div></div>
+    </div>
+    <div class="nav-links" id="navLinks">
+      <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+      <a href="gallery.html"><i class="fas fa-images"></i> Gallery</a>
+      <a href="history.html"><i class="fas fa-book"></i> History</a>
+      <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
     </div>
   </nav>
 
